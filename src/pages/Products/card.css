@@ -1,0 +1,39 @@
+.category{
+    background-color: rgb(123, 115, 131);
+}
+
+.cardParent{
+    position: relative;
+}
+
+.icon1{
+    position: absolute;
+    top: 10%;
+    right: 5%;
+}
+
+.star{
+color: rgb(255, 238, 0);
+font-size: 15px;
+}
+
+.rateDive{
+overflow: hidden;
+}
+
+
+
+.heartbtn{
+     color: rgb(171, 158, 159);
+     font-size: 20px;
+
+}
+.cartbtn{
+    color:rgb(171, 158, 159);
+     font-size: 20px;
+}
+
+/* .heart:hover{
+    color: rgb(196, 18, 18);
+
+} */
