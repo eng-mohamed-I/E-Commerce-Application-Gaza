@@ -90,7 +90,6 @@ function Login() {
     try {
       let response = await api.get(`/users?email=${email}`);
       foundedUser = await response.data[0];
-
       return response.data.length > 0;
     } catch (err) {
       console.error("Error checking email", err);

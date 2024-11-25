@@ -1,4 +1,4 @@
-import React, { useState ,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Dashboard from "./pages/dashboard/dashboard";
@@ -33,12 +33,9 @@ import Wishlist from "./pages/Wishlist/Wishlist";
 import LocalizationProvider from "./localization/langlocalization";
 import useAuth from "./hooks/useAuth";
 
-
-
-
 function AppContent() {
   const location = useLocation();
-  const [locale, setLocale] = useState('en');
+  const [locale, setLocale] = useState("en");
 
   const hideFooterRoutes = ["/login", "/signup", "/dashboard"];
 
@@ -51,118 +48,116 @@ function AppContent() {
   }, []);
   return (
     <>
-        <LocalizationProvider locale={locale}>
-        
-      {!shouldHideFooter && <NavBar  setLocale={setLocale} />}
+      <LocalizationProvider locale={locale}>
+        {!shouldHideFooter && <NavBar setLocale={setLocale} />}
 
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route
-          path="/wishlist"
-          element={
-            <PrivateRoute>
-              <Wishlist />
-            </PrivateRoute>
-          }
-        />
-        <Route path="login" element={<Login />} />
-        <Route path="signup" element={<Signup />} />
-        <Route
-          path="cart"
-          element={
-            <PrivateRoute>
-              <Cart />
-            </PrivateRoute>
-          }
-        />
-        <Route path="/products" element={<ProductsPage />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/success" element={<Success />} />
-        <Route path="/cancel" element={<Cancel />} />
-        <Route path="/about" element={<AboutUs />} />
-        <Route path="/contact" element={<ContactUs />} />
-        <Route path="*" element={<NotFoundPage />} />
-        <Route
-          path="dashboard"
-          element={
-            <PrivateRoute>
-              <Dashboard />
-            </PrivateRoute>
-          }
-        >
+        <Routes>
+          <Route path="/" element={<Home />} />
           <Route
-            index
+            path="/wishlist"
             element={
               <PrivateRoute>
-                <Products />
+                <Wishlist />
               </PrivateRoute>
             }
           />
+          <Route path="login" element={<Login />} />
+          <Route path="signup" element={<Signup />} />
           <Route
-            path="products"
+            path="cart"
             element={
               <PrivateRoute>
-                <Products />
+                <Cart />
               </PrivateRoute>
             }
           />
+          <Route path="/products" element={<ProductsPage />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/success" element={<Success />} />
+          <Route path="/cancel" element={<Cancel />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/contact" element={<ContactUs />} />
+          <Route path="*" element={<NotFoundPage />} />
           <Route
-            path="orders"
+            path="dashboard"
             element={
               <PrivateRoute>
-                <Orders />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="addproduct"
-            element={
-              <PrivateRoute>
-                <AddProduct />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="customers"
-            element={
-              <PrivateRoute>
-                <Customers />
-              </PrivateRoute>
-            }
-          />
-          {/* nested route 34an el category ya :: :')*/}
-          <Route
-            path="categories"
-            element={
-              <PrivateRoute>
-                <AllCategories />
+                <Dashboard />
               </PrivateRoute>
             }
           >
-            <Route index element={<CategoryList />} />
-            <Route path="add-category" element={<CategoryForm />} />
             <Route
-              path="update-category/:categoryId"
-              element={<CategoryForm />}
+              index
+              element={
+                <PrivateRoute>
+                  <Products />
+                </PrivateRoute>
+              }
             />
-          </Route>
-          {/* nested tany  */}
-          <Route
-                path="users"
-                element={
-                    <PrivateRoute>
-                        <AllUsers />
-                    </PrivateRoute>
-                }
+            <Route
+              path="products"
+              element={
+                <PrivateRoute>
+                  <Products />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="orders"
+              element={
+                <PrivateRoute>
+                  <Orders />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="addproduct"
+              element={
+                <PrivateRoute>
+                  <AddProduct />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="customers"
+              element={
+                <PrivateRoute>
+                  <Customers />
+                </PrivateRoute>
+              }
+            />
+            {/* nested route 34an el category ya :: :')*/}
+            <Route
+              path="categories"
+              element={
+                <PrivateRoute>
+                  <AllCategories />
+                </PrivateRoute>
+              }
             >
-                <Route index element={<UserList />} />
-                <Route path="add-user" element={<UserForm />} />
-                <Route path="update-user/:userId" element={<UserForm />} />
+              <Route index element={<CategoryList />} />
+              <Route path="add-category" element={<CategoryForm />} />
+              <Route
+                path="update-category/:categoryId"
+                element={<CategoryForm />}
+              />
             </Route>
-        </Route>
-      </Routes>
-      {!shouldHideFooter && <Footer />}
+            {/* nested tany  */}
+            <Route
+              path="users"
+              element={
+                <PrivateRoute>
+                  <AllUsers />
+                </PrivateRoute>
+              }
+            >
+              <Route index element={<UserList />} />
+              <Route path="add-user" element={<UserForm />} />
+              <Route path="update-user/:userId" element={<UserForm />} />
+            </Route>
+          </Route>
+        </Routes>
+        {!shouldHideFooter && <Footer />}
       </LocalizationProvider>
     </>
   );
